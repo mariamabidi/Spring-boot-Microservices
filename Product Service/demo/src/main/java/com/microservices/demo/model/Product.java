@@ -8,18 +8,18 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "mariamabidi")
-public class User {
+@Table(name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String username;
+    @Column(nullable = false, unique = true)
+    private String name;
 
     @Column(nullable = false)
-    private String password;
+    private double price;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(nullable = false)
+    private int stock;
 }
