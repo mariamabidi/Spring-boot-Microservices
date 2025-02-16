@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Cacheable(value = "products")  // Cache results for faster queries
+    @Cacheable(value = "products") 
     List<Product> findAll();
 }
