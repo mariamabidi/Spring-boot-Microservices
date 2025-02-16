@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .map(user -> new org.springframework.security.core.userdetails.User(
                         user.getUsername(),
                         user.getPassword(),
-                        new ArrayList<>()) // Add roles if necessary
+                        new ArrayList<>()) 
                 )
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
@@ -45,12 +45,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF for stateless APIs like JWT-based authentication
+                .csrf(csrf -> csrf.disable()) 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login", "/api/auth/register").permitAll() // Allow access to register and login
-                        .anyRequest().authenticated() // Other endpoints need authentication
+                        .requestMatchers("/api/auth/login", "/api/auth/register").permitAll() 
+                        .anyRequest().authenticated() 
                 )
-                .formLogin(form -> form.disable()); // Disable form login if you're using JWT or another mechanism
+                .formLogin(form -> form.disable()); 
 
         return http.build();
     }
